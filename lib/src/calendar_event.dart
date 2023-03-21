@@ -10,11 +10,13 @@ class CalendarEvent {
     required this.eventTextStyle,
     this.eventBackgroundColor = Colors.blue,
     this.eventID,
+    this.order,
   });
 
   final String eventName;
   final TextStyle eventTextStyle;
   final DateTime eventDate;
   final String? eventID;
+  final int? order;
   final Color eventBackgroundColor;
 }

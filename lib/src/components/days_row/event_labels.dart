@@ -33,6 +33,7 @@ class EventLabels extends HookConsumerWidget {
             event.eventDate.month == date.month &&
             event.eventDate.day == date.day)
         .toList();
+    res.sort((a, b) => a.order?.compareTo(b.order ?? double.maxFinite.toInt()) ?? double.maxFinite.toInt());
     return res;
   }
 
