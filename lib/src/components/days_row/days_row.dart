@@ -149,9 +149,9 @@ class _TodayLabel extends StatelessWidget {
     return Container(
       margin: EdgeInsets.symmetric(vertical: 2),
       height: 20,
-      width: 20,
+      width: 35,
       decoration: BoxDecoration(
-        shape: BoxShape.circle,
+        shape: BoxShape.rectangle,
         color: todayMarkColor,
       ),
       child: Center(
