@@ -185,29 +185,39 @@ class _CalendarPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final days = _getCurrentDays(visiblePageDate);
-    return Column(
-      children: [
-        DaysOfTheWeek(daysOfTheWeekBuilder),
-        Expanded(
-          child: Column(
-            mainAxisSize: MainAxisSize.min,
-            children: List.generate(
-              6,
-              (index) {
-                return DaysRow(
-                  visiblePageDate: visiblePageDate,
-                  dates: days.getRange(index * 7, (index + 1) * 7).toList(),
-                  dateTextStyle: dateTextStyle,
-                  onCellTapped: onCellTapped,
-                  todayMarkColor: todayMarkColor,
-                  todayTextColor: todayTextColor,
-                  events: events,
-                );
-              },
-            ),
+    return Builder(
+      builder: (context) {
+        final textScaleFactor = MediaQuery.of(context).textScaleFactor;
+        return MediaQuery(
+          data: MediaQuery.of(context).copyWith(
+            textScaleFactor: textScaleFactor.clamp(1.0, 1.05),
           ),
-        ),
-      ],
+          child: Column(
+            children: [
+              DaysOfTheWeek(daysOfTheWeekBuilder),
+              Expanded(
+                child: Column(
+                  mainAxisSize: MainAxisSize.min,
+                  children: List.generate(
+                    6,
+                    (index) {
+                      return DaysRow(
+                        visiblePageDate: visiblePageDate,
+                        dates: days.getRange(index * 7, (index + 1) * 7).toList(),
+                        dateTextStyle: dateTextStyle,
+                        onCellTapped: onCellTapped,
+                        todayMarkColor: todayMarkColor,
+                        todayTextColor: todayTextColor,
+                        events: events,
+                      );
+                    },
+                  ),
+                ),
+              ),
+            ],
+          ),
+        );
+      }
     );
   }
 }

@@ -5,12 +5,12 @@ import 'package:hooks_riverpod/hooks_riverpod.dart';
 import '../../calendar_event.dart';
 
 /// Numbers to return accurate events in the cell.
-const dayLabelContentHeight = 16;
-const dayLabelVerticalMargin = 4;
+const dayLabelContentHeight = 20;
+const dayLabelVerticalMargin = 2;
 const _dayLabelHeight = dayLabelContentHeight + (dayLabelVerticalMargin * 2);
 
 const _eventLabelContentHeight = 13;
-const _eventLabelBottomMargin = 3;
+const _eventLabelBottomMargin = 1.5;
 const _eventLabelHeight = _eventLabelContentHeight + _eventLabelBottomMargin;
 
 /// Get events to be shown from [CalendarStateController]
@@ -60,6 +60,7 @@ class EventLabels extends HookConsumerWidget {
     final hasEnoughSpace = _hasEnoughSpace(cellHeight, eventsOnTheDay.length);
     final maxIndex = _maxIndex(cellHeight, eventsOnTheDay.length);
     return ListView.builder(
+      padding: EdgeInsets.zero,
       physics: NeverScrollableScrollPhysics(),
       shrinkWrap: true,
       itemCount: eventsOnTheDay.length,
@@ -98,7 +99,7 @@ class _EventLabel extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      margin: EdgeInsets.only(right: 4, bottom: 3),
+      margin: EdgeInsets.only(right: 2, bottom: 1.5),
       height: 13,
       width: double.infinity,
       color: event.eventBackgroundColor,
