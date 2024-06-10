@@ -1,7 +1,7 @@
 /// Initial index for pageView of calendar
 ///
-/// User can get back to 1900 year and 1 month.
-int initialPageIndex = (DateTime.now().year - 1900) * 12 + DateTime.now().month - 1;
+/// User can get back to 0 year and 1 month.
+int initialPageIndex = (DateTime.now().year - 1) * 12 + DateTime.now().month - 1;
 
 /// Extension to show accurate date in the calendar by current index of pageView
 extension DateExtension on int {
